@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "../hooks/useTranslation";
+import PropTypes from "prop-types";
 
 const ProjectCard = ({
   title,
@@ -8,6 +10,7 @@ const ProjectCard = ({
   setSelectedProject,
   ...projectData
 }) => {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="group cursor-pointer"
@@ -76,7 +79,7 @@ const ProjectCard = ({
           {/* View More Button */}
           <div className="mt-auto">
             <button className="flex items-center gap-2 text-sand hover:text-aqua transition-colors duration-300 text-sm font-medium">
-              <span>View Details</span>
+              <span>{t("common.viewDetails")}</span>
               <img src="assets/arrow-right.svg" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
@@ -87,6 +90,19 @@ const ProjectCard = ({
       </div>
     </motion.div>
   );
+};
+
+// PropTypes validation
+ProjectCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.string,
+    path: PropTypes.string
+  })).isRequired,
+  setSelectedProject: PropTypes.func.isRequired
 };
 
 export default ProjectCard;

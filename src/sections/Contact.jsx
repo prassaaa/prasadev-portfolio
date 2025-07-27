@@ -2,7 +2,9 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
+import { useTranslation } from "../hooks/useTranslation";
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,18 +48,18 @@ const Contact = () => {
 
       setIsLoading(false);
       setFormData({ name: "", email: "", message: "" });
-      showAlertMessage("success", "Your message has been sent successfully!");
+      showAlertMessage("success", t("contact.messages.success"));
     } catch (error) {
       setIsLoading(false);
       console.error("EmailJS Error:", error);
 
       // More specific error messages
       if (error.status === 400) {
-        showAlertMessage("danger", "Template configuration error. Please check EmailJS settings.");
+        showAlertMessage("danger", t("contact.messages.templateError"));
       } else if (error.status === 401) {
-        showAlertMessage("danger", "Authentication error. Please check your EmailJS keys.");
+        showAlertMessage("danger", t("contact.messages.authError"));
       } else {
-        showAlertMessage("danger", "Failed to send message. Please try again later.");
+        showAlertMessage("danger", t("contact.messages.error"));
       }
     }
   };
@@ -73,31 +75,30 @@ const Contact = () => {
 
       {/* Header */}
       <div className="mb-16 text-center">
-        <h2 className="text-heading mb-4">Let&apos;s Talk</h2>
+        <h2 className="text-heading mb-4">{t("contact.title")}</h2>
         <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-6">
-          Ready to bring your ideas to life? Let&apos;s discuss your project and create
-          something amazing together. I&apos;m here to help turn your vision into reality.
+          {t("contact.subtitle")}
         </p>
 
         {/* Stats */}
         <div className="flex items-center justify-center gap-8 text-center">
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">24h</span>
-            <span className="text-sm text-neutral-400">Response Time</span>
+            <span className="text-sm text-neutral-400">{t("contact.stats.response")}</span>
           </div>
 
           <div className="w-px h-12 bg-neutral-700"></div>
 
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">Free</span>
-            <span className="text-sm text-neutral-400">Consultation</span>
+            <span className="text-sm text-neutral-400">{t("contact.stats.consultation")}</span>
           </div>
 
           <div className="w-px h-12 bg-neutral-700"></div>
 
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">100%</span>
-            <span className="text-sm text-neutral-400">Satisfaction</span>
+            <span className="text-sm text-neutral-400">{t("contact.stats.satisfaction")}</span>
           </div>
         </div>
       </div>
@@ -111,10 +112,9 @@ const Contact = () => {
         <div className="flex-1 max-w-lg">
           <div className="space-y-8">
             <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-bold text-white mb-4">Get In Touch</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">{t("contact.form.title")}</h3>
               <p className="text-neutral-300 leading-relaxed">
-                Whether you&apos;re looking to build a new website, improve your existing
-                platform, or bring a unique project to life, I&apos;m here to help.
+                {t("contact.form.description")}
               </p>
             </div>
 
@@ -127,8 +127,8 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Email</h4>
-                  <p className="text-neutral-400">prasetyo@example.com</p>
+                  <h4 className="font-semibold text-white">{t("contact.info.email")}</h4>
+                  <p className="text-neutral-400">pras.ari69@gmail.com</p>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Location</h4>
+                  <h4 className="font-semibold text-white">{t("contact.info.location")}</h4>
                   <p className="text-neutral-400">Kediri, Jawa Timur, Indonesia</p>
                 </div>
               </div>
@@ -152,8 +152,8 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Availability</h4>
-                  <p className="text-neutral-400">Available for new projects</p>
+                  <h4 className="font-semibold text-white">{t("contact.info.availability")}</h4>
+                  <p className="text-neutral-400">{t("contact.info.available")}</p>
                 </div>
               </div>
             </div>
@@ -164,13 +164,13 @@ const Contact = () => {
         <div className="flex-1 max-w-lg">
           <div className="p-8 border border-white/10 rounded-2xl bg-gradient-to-br from-storm/50 to-indigo/50 backdrop-blur-sm">
             <div className="mb-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-2">Send Message</h3>
-              <p className="text-neutral-400">Fill out the form below and I&apos;ll get back to you soon.</p>
+              <h3 className="text-2xl font-bold text-white mb-2">{t("contact.form.sendTitle")}</h3>
+              <p className="text-neutral-400">{t("contact.form.sendDescription")}</p>
             </div>
         <form className="w-full" onSubmit={handleSubmit}>
           <div className="mb-5">
             <label htmlFor="name" className="feild-label">
-              Full Name
+              {t("contact.form.name")}
             </label>
             <input
               id="name"
@@ -186,7 +186,7 @@ const Contact = () => {
           </div>
           <div className="mb-5">
             <label htmlFor="email" className="feild-label">
-              Email
+              {t("contact.form.email")}
             </label>
             <input
               id="email"
@@ -202,7 +202,7 @@ const Contact = () => {
           </div>
           <div className="mb-5">
             <label htmlFor="message" className="feild-label">
-              Message
+              {t("contact.form.message")}
             </label>
             <textarea
               id="message"
@@ -221,7 +221,7 @@ const Contact = () => {
             type="submit"
             className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation"
           >
-            {!isLoading ? "Send" : "Sending..."}
+            {!isLoading ? t("contact.form.send") : t("contact.form.sending")}
           </button>
         </form>
           </div>

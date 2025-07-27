@@ -1,19 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
-// Define navItems outside component to avoid re-renders
-const navItems = [
-  { id: "home", label: "Home", href: "#home" },
-  { id: "about", label: "About", href: "#about" },
-  { id: "work", label: "Projects", href: "#work" },
-  { id: "experience", label: "Experience", href: "#experience" },
-  { id: "contact", label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "../hooks/useLanguage";
+import { useTranslation } from "../hooks/useTranslation";
 
 const FloatingHeader = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { language, toggleLanguage } = useLanguage();
+  const { t } = useTranslation();
+
+  // Define navItems with translations using useMemo to prevent re-renders
+  const navItems = useMemo(() => [
+    { id: "home", label: t("nav.home"), href: "#home" },
+    { id: "about", label: t("nav.about"), href: "#about" },
+    { id: "work", label: t("nav.projects"), href: "#work" },
+    { id: "experience", label: t("nav.experience"), href: "#experience" },
+    { id: "contact", label: t("nav.contact"), href: "#contact" },
+  ], [t]);
 
   useEffect(() => {
     // Show header immediately on load
@@ -47,7 +52,7 @@ const FloatingHeader = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navItems]);
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
@@ -114,25 +119,46 @@ const FloatingHeader = () => {
                 ))}
               </nav>
 
-              {/* Mobile Menu Button */}
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-white hover:text-aqua transition-colors"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              {/* Language Switcher & Mobile Menu */}
+              <div className="flex items-center gap-2">
+                {/* Language Switcher (Always Visible) */}
+                <motion.button
+                  onClick={toggleLanguage}
+                  className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  title={language === 'en' ? 'Switch to Indonesian' : 'Switch to English'}
                 >
-                  {isMobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </motion.button>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm">
+                      {language === 'en' ? '🇺🇸' : '🇮🇩'}
+                    </span>
+                    <span className="text-xs font-medium text-neutral-300 hidden sm:block">
+                      {language.toUpperCase()}
+                    </span>
+                  </div>
+                </motion.button>
+
+                {/* Mobile Menu Button */}
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="md:hidden p-2 text-white hover:text-aqua transition-colors"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    {isMobileMenuOpen ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
+                </motion.button>
+              </div>
             </div>
 
             {/* Mobile Menu */}

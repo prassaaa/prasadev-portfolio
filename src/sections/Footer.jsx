@@ -1,16 +1,17 @@
 import { mySocials } from "../constants";
+import { useTranslation } from "../hooks/useTranslation";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="relative c-space py-16">
       {/* Header */}
       <div className="mb-16 text-center">
-        <h2 className="text-heading mb-4">Let&apos;s Stay Connected</h2>
+        <h2 className="text-heading mb-4">{t("footer.title")}</h2>
         <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-6">
-          Follow my journey, connect with me on social media, and let&apos;s build
-          something amazing together.
+          {t("footer.subtitle")}
         </p>
 
         {/* Social Links */}
@@ -39,19 +40,19 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/10">
         <div className="flex items-center gap-4 text-sm text-neutral-400">
-          <a href="#" className="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+          <a href="#" className="hover:text-white transition-colors duration-300">{t("footer.terms")}</a>
           <span>|</span>
-          <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
+          <a href="#" className="hover:text-white transition-colors duration-300">{t("footer.privacy")}</a>
         </div>
 
         <p className="text-sm text-neutral-400">
-          © {currentYear} Prasetyo Ari Wibowo. All rights reserved.
+          © {currentYear} Prasetyo Ari Wibowo. {t("footer.copyright")}
         </p>
 
         <div className="flex items-center gap-2 text-sm text-neutral-400">
-          <span>Made with</span>
+          <span>{t("footer.made")}</span>
           <span className="text-red-500 animate-pulse">❤️</span>
-          <span>using React & Three.js</span>
+          <span>{t("footer.using")}</span>
         </div>
       </div>
 

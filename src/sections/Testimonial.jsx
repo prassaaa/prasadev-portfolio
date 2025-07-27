@@ -1,10 +1,13 @@
 import { twMerge } from "tailwind-merge";
 import Marquee from "../components/Marquee";
 import { reviews } from "../constants";
+import { useTranslation } from "../hooks/useTranslation";
+import PropTypes from "prop-types";
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 
 const ReviewCard = ({ img, name, role, company, body, rating, project, result }) => {
+  const { t } = useTranslation();
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, index) => (
       <svg
@@ -61,7 +64,7 @@ const ReviewCard = ({ img, name, role, company, body, rating, project, result })
 
       {/* Testimonial */}
       <blockquote className="text-sm text-white/90 leading-relaxed mb-4 line-clamp-4">
-        "{body}"
+        &ldquo;{body}&rdquo;
       </blockquote>
 
       {/* Result */}
@@ -70,7 +73,7 @@ const ReviewCard = ({ img, name, role, company, body, rating, project, result })
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-mint rounded-full"></div>
             <p className="text-xs font-medium text-mint">
-              Result: {result}
+              {t("testimonials.result")}: {result}
             </p>
           </div>
         </div>
@@ -79,17 +82,29 @@ const ReviewCard = ({ img, name, role, company, body, rating, project, result })
   );
 };
 
+// PropTypes validation for ReviewCard
+ReviewCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  company: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  project: PropTypes.string,
+  result: PropTypes.string
+};
+
 export default function Testimonial() {
+  const { t } = useTranslation();
   const averageRating = (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1);
 
   return (
     <div className="items-start mt-25 md:mt-35 c-space">
       {/* Header */}
       <div className="mb-16 text-center">
-        <h2 className="text-heading mb-4">Hear From My Clients</h2>
+        <h2 className="text-heading mb-4">{t("testimonials.title")}</h2>
         <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-6">
-          Real feedback from clients who trusted me with their projects.
-          See how I've helped businesses achieve their goals through quality development.
+          {t("testimonials.subtitle")}
         </p>
 
         {/* Stats */}
@@ -110,21 +125,21 @@ export default function Testimonial() {
               ))}
             </div>
             <span className="text-2xl font-bold text-white">{averageRating}</span>
-            <span className="text-sm text-neutral-400">Average Rating</span>
+            <span className="text-sm text-neutral-400">{t("testimonials.stats.rating")}</span>
           </div>
 
           <div className="w-px h-12 bg-neutral-700"></div>
 
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">{reviews.length}</span>
-            <span className="text-sm text-neutral-400">Happy Clients</span>
+            <span className="text-sm text-neutral-400">{t("testimonials.stats.clients")}</span>
           </div>
 
           <div className="w-px h-12 bg-neutral-700"></div>
 
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">100%</span>
-            <span className="text-sm text-neutral-400">Project Success</span>
+            <span className="text-sm text-neutral-400">{t("testimonials.stats.success")}</span>
           </div>
         </div>
       </div>

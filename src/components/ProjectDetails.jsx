@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "../hooks/useTranslation";
+import PropTypes from "prop-types";
 const ProjectDetails = ({
   title,
   description,
@@ -8,6 +10,7 @@ const ProjectDetails = ({
   href,
   closeModal,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm">
       <motion.div
@@ -26,7 +29,7 @@ const ProjectDetails = ({
           <h5 className="mb-2 text-2xl font-bold text-white">{title}</h5>
           <p className="mb-3 font-normal text-neutral-400">{description}</p>
           {subDescription.map((subDesc, index) => (
-            <p className="mb-3 font-normal text-neutral-400">{subDesc}</p>
+            <p key={index} className="mb-3 font-normal text-neutral-400">{subDesc}</p>
           ))}
           <div className="flex items-center justify-between mt-4">
             <div className="flex gap-3">
@@ -40,7 +43,7 @@ const ProjectDetails = ({
               ))}
             </div>
             <a className="inline-flex items-center gap-1 font-medium cursor-pointer hover-animation">
-              View Project{" "}
+              {t("common.viewProject")}{" "}
               <img src="assets/arrow-up.svg" className="size-4" href={href} />
             </a>
           </div>
@@ -48,6 +51,21 @@ const ProjectDetails = ({
       </motion.div>
     </div>
   );
+};
+
+// PropTypes validation
+ProjectDetails.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  subDescription: PropTypes.arrayOf(PropTypes.string).isRequired,
+  image: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.string,
+    path: PropTypes.string
+  })).isRequired,
+  href: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired
 };
 
 export default ProjectDetails;

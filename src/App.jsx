@@ -1,3 +1,4 @@
+import { LanguageProvider } from "./contexts/LanguageContext";
 import FloatingHeader from "./components/FloatingHeader";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -9,20 +10,22 @@ import Footer from './sections/Footer';
 
 const App = () => {
   return (
-    <div className="container mx-auto max-w-7xl">
-      <FloatingHeader />
-      <section id="home">
-        <Hero />
-      </section>
-      <About />
-      <Projects />
-      <section id="experience">
-        <Experiences />
-      </section>
-      <Testimonial />
-      <Contact />
-      <Footer/>
-    </div>
+    <LanguageProvider>
+      <div className="container mx-auto max-w-7xl">
+        <FloatingHeader />
+        <section id="home">
+          <Hero />
+        </section>
+        <About />
+        <Projects />
+        <section id="experience">
+          <Experiences />
+        </section>
+        <Testimonial />
+        <Contact />
+        <Footer/>
+      </div>
+    </LanguageProvider>
   );
 };
 

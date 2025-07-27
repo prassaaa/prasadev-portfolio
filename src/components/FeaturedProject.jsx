@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useTranslation } from "../hooks/useTranslation";
+import PropTypes from "prop-types";
 
 const FeaturedProject = ({
   title,
@@ -8,6 +10,7 @@ const FeaturedProject = ({
   setSelectedProject,
   ...projectData
 }) => {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="relative group cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-storm to-indigo"
@@ -31,7 +34,7 @@ const FeaturedProject = ({
         {/* Featured Badge */}
         <div className="absolute top-6 left-6">
           <span className="px-4 py-2 bg-gradient-to-r from-royal to-lavender rounded-full text-sm font-medium text-white">
-            ⭐ Featured Project
+            ⭐ {t("projects.featured")}
           </span>
         </div>
       </div>
@@ -83,6 +86,19 @@ const FeaturedProject = ({
       <div className="absolute inset-0 bg-gradient-to-br from-royal/20 to-lavender/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </motion.div>
   );
+};
+
+// PropTypes validation
+FeaturedProject.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.string,
+    path: PropTypes.string
+  })).isRequired,
+  setSelectedProject: PropTypes.func.isRequired
 };
 
 export default FeaturedProject;

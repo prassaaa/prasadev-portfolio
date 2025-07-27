@@ -1,7 +1,9 @@
 import { FlipWords } from "./FlipWords";
 import { motion } from "motion/react";
+import { useTranslation } from "../hooks/useTranslation";
 
 const HeroText = () => {
+  const { t } = useTranslation();
   const words = ["Secure", "Modern", "Scalable"];
   const variants = {
     hidden: { opacity: 0, x: -50 },
@@ -32,7 +34,7 @@ const HeroText = () => {
           transition={{ delay: 1 }}
         >
           <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-neutral-300 bg-clip-text text-transparent">
-            Hi I&apos;m Prass
+            {t("hero.greeting")} {t("hero.name")}
           </h1>
           <div className="w-16 h-1 bg-gradient-to-r from-aqua to-mint mt-2"></div>
         </motion.div>
@@ -45,7 +47,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.2 }}
           >
-            A Developer <br /> Dedicated to Crafting
+            {t("hero.title")}
           </motion.p>
 
           <motion.div
@@ -74,7 +76,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.8 }}
           >
-            Web Solutions
+            {t("hero.subtitle")}
           </motion.p>
         </div>
 
@@ -86,7 +88,7 @@ const HeroText = () => {
           animate="visible"
           transition={{ delay: 2.1 }}
         >
-          Transforming ideas into powerful digital experiences with cutting-edge technology and innovative design.
+          {t("hero.tagline")}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -101,7 +103,7 @@ const HeroText = () => {
             onClick={() => scrollToSection('work')}
             className="group relative px-6 py-3 bg-gradient-to-r from-aqua to-mint text-black font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-aqua/25 hover:-translate-y-1"
           >
-            <span className="relative z-10">View My Work</span>
+            <span className="relative z-10">{t("hero.viewWork")}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-mint to-aqua opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
 
@@ -110,7 +112,7 @@ const HeroText = () => {
             className="group px-6 py-3 border-2 border-white/20 text-white font-semibold rounded-lg transition-all duration-300 hover:border-aqua hover:text-aqua hover:-translate-y-1"
           >
             <span className="flex items-center gap-2">
-              Let&apos;s Connect
+              {t("hero.connect")}
               <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -128,7 +130,7 @@ const HeroText = () => {
         >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-mint rounded-full animate-pulse"></div>
-            <span className="text-neutral-300 text-sm font-medium">Available for freelance work</span>
+            <span className="text-neutral-300 text-sm font-medium">{t("hero.available")}</span>
           </div>
         </motion.div>
       </div>
@@ -142,7 +144,7 @@ const HeroText = () => {
           transition={{ delay: 1 }}
         >
           <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-neutral-300 bg-clip-text text-transparent">
-            Hi I&apos;m Prass
+            {t("hero.greeting")} {t("hero.name")}
           </h1>
           <div className="w-12 h-1 bg-gradient-to-r from-aqua to-mint mt-2 mx-auto"></div>
         </motion.div>
@@ -155,7 +157,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.2 }}
           >
-            Building
+            {t("hero.building")}
           </motion.p>
 
           <motion.div
@@ -183,7 +185,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ delay: 1.8 }}
           >
-            Web Applications
+            {t("hero.webApps")}
           </motion.p>
         </div>
 
@@ -195,7 +197,7 @@ const HeroText = () => {
           animate="visible"
           transition={{ delay: 2.1 }}
         >
-          Transforming ideas into powerful digital experiences.
+          {t("hero.taglineMobile")}
         </motion.p>
 
         {/* Mobile CTA Buttons */}
@@ -210,7 +212,7 @@ const HeroText = () => {
             onClick={() => scrollToSection('work')}
             className="w-full max-w-xs group relative px-5 py-2.5 bg-gradient-to-r from-aqua to-mint text-black font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-aqua/25"
           >
-            <span className="relative z-10">View My Work</span>
+            <span className="relative z-10">{t("hero.viewWork")}</span>
             <div className="absolute inset-0 bg-gradient-to-r from-mint to-aqua opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
 
@@ -219,7 +221,7 @@ const HeroText = () => {
             className="w-full max-w-xs group px-5 py-2.5 border-2 border-white/20 text-white font-semibold rounded-lg transition-all duration-300 hover:border-aqua hover:text-aqua"
           >
             <span className="flex items-center justify-center gap-2">
-              Let&apos;s Connect
+              {t("hero.connect")}
               <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -236,7 +238,7 @@ const HeroText = () => {
           transition={{ delay: 2.7 }}
         >
           <div className="w-2 h-2 bg-mint rounded-full animate-pulse"></div>
-          <span className="text-neutral-300 text-xs font-medium">Available for work</span>
+          <span className="text-neutral-300 text-xs font-medium">{t("hero.availableMobile")}</span>
         </motion.div>
       </div>
     </div>

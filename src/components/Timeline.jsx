@@ -1,8 +1,11 @@
 "use client";
 import { useScroll, useTransform, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "../hooks/useTranslation";
+import PropTypes from "prop-types";
 
 export const Timeline = ({ data }) => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
@@ -26,31 +29,30 @@ export const Timeline = ({ data }) => {
     <div className="c-space section-spacing" ref={containerRef}>
       {/* Header */}
       <div className="mb-16 text-center">
-        <h2 className="text-heading mb-4">My Work Experience</h2>
+        <h2 className="text-heading mb-4">{t("experience.title")}</h2>
         <p className="text-neutral-400 text-lg max-w-2xl mx-auto mb-6">
-          A journey through my professional development, showcasing the diverse projects
-          and technologies I've worked with across different industries.
+          {t("experience.subtitle")}
         </p>
 
         {/* Stats */}
         <div className="flex items-center justify-center gap-8 text-center">
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">4+</span>
-            <span className="text-sm text-neutral-400">Years Experience</span>
+            <span className="text-sm text-neutral-400">{t("experience.stats.years")}</span>
           </div>
 
           <div className="w-px h-12 bg-neutral-700"></div>
 
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">3</span>
-            <span className="text-sm text-neutral-400">Companies</span>
+            <span className="text-sm text-neutral-400">{t("experience.stats.companies")}</span>
           </div>
 
           <div className="w-px h-12 bg-neutral-700"></div>
 
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-white">15+</span>
-            <span className="text-sm text-neutral-400">Technologies</span>
+            <span className="text-sm text-neutral-400">{t("experience.stats.technologies")}</span>
           </div>
         </div>
       </div>
@@ -127,7 +129,7 @@ export const Timeline = ({ data }) => {
               {item.skills && item.skills.length > 0 && (
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-neutral-400 mb-3 uppercase tracking-wide">
-                    Technologies Used
+                    {t("experience.technologiesUsed")}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {item.skills.map((skill, index) => (
@@ -151,7 +153,7 @@ export const Timeline = ({ data }) => {
               {item.achievements && item.achievements.length > 0 && (
                 <div className="mb-4">
                   <h4 className="text-sm font-semibold text-neutral-400 mb-3 uppercase tracking-wide">
-                    Key Achievements
+                    {t("experience.achievements")}
                   </h4>
                   <div className="space-y-2">
                     {item.achievements.map((achievement, index) => (
@@ -185,4 +187,20 @@ export const Timeline = ({ data }) => {
       </div>
     </div>
   );
+};
+
+// PropTypes validation
+Timeline.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    title: PropTypes.string,
+    company: PropTypes.string,
+    date: PropTypes.string,
+    description: PropTypes.arrayOf(PropTypes.string),
+    skills: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      icon: PropTypes.string
+    })),
+    achievements: PropTypes.arrayOf(PropTypes.string)
+  })).isRequired
 };
