@@ -1,4 +1,4 @@
-import Navbar from "./sections/Navbar";
+import FloatingHeader from "./components/FloatingHeader";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
@@ -10,11 +10,15 @@ import Footer from './sections/Footer';
 const App = () => {
   return (
     <div className="container mx-auto max-w-7xl">
-      <Navbar />
-      <Hero />
+      <FloatingHeader />
+      <section id="home">
+        <Hero />
+      </section>
       <About />
       <Projects />
-      <Experiences />
+      <section id="experience">
+        <Experiences />
+      </section>
       <Testimonial />
       <Contact />
       <Footer/>
