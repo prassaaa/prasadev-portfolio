@@ -9,6 +9,14 @@ const Projects = () => {
   const { t } = useTranslation();
   const myProjects = t("projects.data");
 
+  const handleScrollTo = (e, selector) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(selector);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   // Split projects: first one as featured, rest as grid
   const featuredProject = myProjects[0];
   const gridProjects = myProjects.slice(1);
@@ -73,6 +81,18 @@ const Projects = () => {
           closeModal={() => setSelectedProject(null)}
         />
       )}
+
+      {/* CTA Button */}
+      <div className="mt-20 text-center">
+        <a
+          href="#contact"
+          onClick={(e) => handleScrollTo(e, "#contact")}
+          className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-white transition-colors rounded-lg bg-aqua/20 hover:bg-aqua/30 hover-animation"
+        >
+          <span>{t("contact.title")}</span>
+          <img src="assets/arrow-right.svg" className="size-5" alt="Contact icon"/>
+        </a>
+      </div>
     </section>
   );
 };

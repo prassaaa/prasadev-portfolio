@@ -2,6 +2,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import FloatingHeader from "./components/FloatingHeader";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import Services from "./sections/Services";
 import Projects from "./sections/Projects";
 import Experiences from "./sections/Experiences";
 import Testimonial from "./sections/Testimonial";
@@ -17,6 +18,9 @@ const App = () => {
           <Hero />
         </section>
         <About />
+        <section id="services">
+          <Services />
+        </section>
         <Projects />
         <section id="experience">
           <Experiences />

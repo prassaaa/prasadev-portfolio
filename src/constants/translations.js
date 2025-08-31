@@ -4,6 +4,7 @@ export const translations = {
     nav: {
       home: "Home",
       about: "About",
+      services: "Services",
       projects: "Projects",
       experience: "Experience",
       contact: "Contact",
@@ -56,6 +57,39 @@ export const translations = {
       },
     },
 
+    // Services Section
+    services: {
+      title: "What I Offer",
+      subtitle:
+        "A collection of my professional services, tailored to meet the needs of modern digital projects.",
+      data: [
+        {
+          icon: "/assets/logos/react.svg",
+          title: "Interactive Frontend Development",
+          description:
+            "Building responsive and engaging user interfaces with modern frameworks like React, and creating immersive 3D experiences with Three.js.",
+        },
+        {
+          icon: "/assets/logos/dotnetcore.svg",
+          title: "Backend & API Development",
+          description:
+            "Developing robust and scalable server-side applications and APIs using .NET, ensuring secure and efficient data management.",
+        },
+        {
+          icon: "/assets/logos/auth0.svg",
+          title: "Security & System Integration",
+          description:
+            "Implementing secure authentication systems with Auth0, ensuring data privacy, and integrating various third-party services and APIs.",
+        },
+        {
+          icon: "/assets/logos/blazor.svg",
+          title: "Full-Stack Solutions",
+          description:
+            "From concept to deployment, I provide end-to-end web application development, combining frontend and backend expertise to deliver complete solutions.",
+        },
+      ],
+    },
+
     // Projects Section
     projects: {
       title: "My Selected Projects",
@@ -79,7 +113,8 @@ export const translations = {
             "Designed a responsive frontend with Tailwind CSS, enhancing user experience.",
             "Added payment systems, localization, and product filtering for functionality improvements.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/accessories.jpg",
           tags: [
@@ -116,7 +151,8 @@ export const translations = {
             "Developed a React-based frontend with Tailwind CSS for a sleek user experience.",
             "Connected to a secure SQLite database for user data storage.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/auth-system.jpg",
           tags: [
@@ -153,7 +189,8 @@ export const translations = {
             "Designed responsive UI components with Tailwind CSS for an enhanced UX.",
             "Integrated SQLite for efficient client-side database storage.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/blazor-app.jpg",
           tags: [
@@ -190,7 +227,8 @@ export const translations = {
             "Implemented a scripting system for easy game customization.",
             "Optimized performance with multi-threading and efficient memory management.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/game-engine.jpg",
           tags: [
@@ -227,7 +265,8 @@ export const translations = {
             "Optimized SEO and page speed using Vite.js for fast builds.",
             "Implemented custom widgets and plugin compatibility for extended functionality.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/wordpress-theme.jpg",
           tags: [
@@ -264,7 +303,8 @@ export const translations = {
             "Added a quiz system with dynamic question generation and real-time grading.",
             "Integrated Stripe API for secure payment processing.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/elearning.jpg",
           tags: [
@@ -541,6 +581,7 @@ export const translations = {
     nav: {
       home: "Beranda",
       about: "Tentang",
+      services: "Layanan",
       projects: "Proyek",
       experience: "Pengalaman",
       contact: "Kontak",
@@ -593,6 +634,39 @@ export const translations = {
       },
     },
 
+    // Services Section
+    services: {
+      title: "Layanan yang Saya Tawarkan",
+      subtitle:
+        "Kumpulan layanan profesional saya, yang disesuaikan untuk memenuhi kebutuhan proyek digital modern.",
+      data: [
+        {
+          icon: "/assets/logos/react.svg",
+          title: "Pengembangan Frontend Interaktif",
+          description:
+            "Membangun antarmuka pengguna yang responsif dan menarik dengan framework modern seperti React, dan menciptakan pengalaman 3D yang imersif dengan Three.js.",
+        },
+        {
+          icon: "/assets/logos/dotnetcore.svg",
+          title: "Pengembangan Backend & API",
+          description:
+            "Mengembangkan aplikasi sisi server dan API yang kuat dan dapat diskalakan menggunakan .NET, memastikan manajemen data yang aman dan efisien.",
+        },
+        {
+          icon: "/assets/logos/auth0.svg",
+          title: "Keamanan & Integrasi Sistem",
+          description:
+            "Menerapkan sistem otentikasi yang aman dengan Auth0, memastikan privasi data, dan mengintegrasikan berbagai layanan dan API pihak ketiga.",
+        },
+        {
+          icon: "/assets/logos/blazor.svg",
+          title: "Solusi Full-Stack",
+          description:
+            "Dari konsep hingga penerapan, saya menyediakan pengembangan aplikasi web end-to-end, menggabungkan keahlian frontend dan backend untuk memberikan solusi lengkap.",
+        },
+      ],
+    },
+
     // Projects Section
     projects: {
       title: "Proyek Pilihan Saya",
@@ -616,7 +690,8 @@ export const translations = {
             "Merancang frontend yang responsif dengan Tailwind CSS, meningkatkan pengalaman pengguna.",
             "Menambahkan sistem pembayaran, lokalisasi, dan pemfilteran produk untuk peningkatan fungsionalitas.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/accessories.jpg",
           tags: [
@@ -653,7 +728,8 @@ export const translations = {
             "Mengembangkan frontend berbasis React dengan Tailwind CSS untuk pengalaman pengguna yang ramping.",
             "Terhubung ke basis data SQLite yang aman untuk penyimpanan data pengguna.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/auth-system.jpg",
           tags: [
@@ -690,7 +766,8 @@ export const translations = {
             "Merancang komponen UI yang responsif dengan Tailwind CSS untuk UX yang lebih baik.",
             "Mengintegrasikan SQLite untuk penyimpanan basis data sisi klien yang efisien.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/blazor-app.jpg",
           tags: [
@@ -727,7 +804,8 @@ export const translations = {
             "Menerapkan sistem skrip untuk kustomisasi game yang mudah.",
             "Mengoptimalkan kinerja dengan multi-threading dan manajemen memori yang efisien.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/game-engine.jpg",
           tags: [
@@ -764,7 +842,8 @@ export const translations = {
             "Mengoptimalkan SEO dan kecepatan halaman menggunakan Vite.js untuk build yang cepat.",
             "Menerapkan widget kustom dan kompatibilitas plugin untuk fungsionalitas yang diperluas.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/wordpress-theme.jpg",
           tags: [
@@ -801,7 +880,8 @@ export const translations = {
             "Menambahkan sistem kuis dengan pembuatan pertanyaan dinamis dan penilaian real-time.",
             "Mengintegrasikan Stripe API untuk pemrosesan pembayaran yang aman.",
           ],
-          href: "",
+          href: "#",
+          sourceCodeHref: "#",
           logo: "",
           image: "/assets/projects/elearning.jpg",
           tags: [

@@ -15,6 +15,7 @@ const FloatingHeader = () => {
   const navItems = useMemo(() => [
     { id: "home", label: t("nav.home"), href: "#home" },
     { id: "about", label: t("nav.about"), href: "#about" },
+    { id: "services", label: t("nav.services"), href: "#services" },
     { id: "work", label: t("nav.projects"), href: "#work" },
     { id: "experience", label: t("nav.experience"), href: "#experience" },
     { id: "contact", label: t("nav.contact"), href: "#contact" },

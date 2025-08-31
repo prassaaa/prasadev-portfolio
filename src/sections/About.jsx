@@ -9,6 +9,14 @@ const About = () => {
   const grid2Container = useRef();
   const { t } = useTranslation();
 
+  const handleScrollTo = (e, selector) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(selector);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="c-space section-spacing" id="about">
       {/* Header */}
@@ -142,6 +150,18 @@ const About = () => {
             <Frameworks />
           </div>
         </div>
+      </div>
+
+      {/* CTA Button */}
+      <div className="mt-16 text-center">
+        <a
+          href="#work"
+          onClick={(e) => handleScrollTo(e, "#work")}
+          className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-white transition-colors rounded-lg bg-aqua/20 hover:bg-aqua/30 hover-animation"
+        >
+          <span>{t("hero.viewWork")}</span>
+          <img src="assets/arrow-right.svg" className="size-5" alt="View work icon"/>
+        </a>
       </div>
     </section>
   );
