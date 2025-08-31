@@ -5,11 +5,18 @@ import { LanguageContext } from './context';
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
 
-  // Load saved language from localStorage
+  // Load saved language from localStorage or detect browser language
   useEffect(() => {
     const savedLanguage = localStorage.getItem('preferred-language');
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'id')) {
       setLanguage(savedLanguage);
+    } else {
+      const browserLang = navigator.language.split('-')[0];
+      if (browserLang === 'id') {
+        setLanguage('id');
+      } else {
+        setLanguage('en'); // Default to English
+      }
     }
   }, []);
 
