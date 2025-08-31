@@ -76,7 +76,7 @@ export const translations = {
             "Developing robust and scalable server-side applications and APIs using .NET, ensuring secure and efficient data management.",
         },
         {
-          icon: "/assets/logos/auth0.svg",
+          icon: "/assets/logos/security.svg",
           title: "Security & System Integration",
           description:
             "Implementing secure authentication systems with Auth0, ensuring data privacy, and integrating various third-party services and APIs.",
