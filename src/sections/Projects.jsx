@@ -2,12 +2,12 @@ import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import FeaturedProject from "../components/FeaturedProject";
 import ProjectDetails from "../components/ProjectDetails";
-import { myProjects } from "../constants";
 import { useTranslation } from "../hooks/useTranslation";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const { t } = useTranslation();
+  const myProjects = t("projects.data");
 
   // Split projects: first one as featured, rest as grid
   const featuredProject = myProjects[0];

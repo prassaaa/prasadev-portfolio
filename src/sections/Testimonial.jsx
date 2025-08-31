@@ -1,10 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import Marquee from "../components/Marquee";
-import { reviews } from "../constants";
 import { useTranslation } from "../hooks/useTranslation";
 import PropTypes from "prop-types";
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
 
 const ReviewCard = ({ img, name, role, company, body, rating, project, result }) => {
   const { t } = useTranslation();
@@ -96,6 +93,9 @@ ReviewCard.propTypes = {
 
 export default function Testimonial() {
   const { t } = useTranslation();
+  const reviews = t("testimonials.data");
+  const firstRow = reviews.slice(0, reviews.length / 2);
+  const secondRow = reviews.slice(reviews.length / 2);
   const averageRating = (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1);
 
   return (
